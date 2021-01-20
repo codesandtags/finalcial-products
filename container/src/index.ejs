@@ -59,7 +59,9 @@
           "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
           "@codesandtags/root-config": "//localhost:9000/codesandtags-root-config.js",
           "@codesandtags/navbar": "//localhost:8081/codesandtags-navbar.js",
-          "@codesandtags/saving-accounts": "//localhost:8082/codesandtags-saving-accounts.js"
+          "@codesandtags/saving-accounts": "//localhost:8082/codesandtags-saving-accounts.js",
+          "@codesandtags/credit-cards": "//localhost:8083/codesandtags-credit-cards.js",
+          "@codesandtags/insurance": "//localhost:8084/codesandtags-insurance.js"
         }
       }
     </script>
@@ -95,14 +97,20 @@
         <route path="saving-accounts">
           <application name="@codesandtags/saving-accounts"></application>
         </route>
+        <route path="credit-cards">
+          <application name="@codesandtags/credit-cards"></application>
+        </route>
+        <route path="insurance">
+          <application name="@codesandtags/insurance"></application>
+        </route>
       </single-spa-router>
     </template>
   </head>
   <body>
     <script>
+      // Mandatory imports in the first load
       System.import("@codesandtags/root-config");
       System.import("@codesandtags/navbar");
-      System.import("@codesandtags/saving-accounts");
     </script>
     <import-map-overrides-full
       show-when-local-storage="devtools"

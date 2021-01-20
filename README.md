@@ -26,13 +26,14 @@ This project uses:
 
 @TODO: Add architecture logical view or conceptual diagram.
 
-| Micro Frontend | Description                                            | Technologies |
-| :------------- | :----------------------------------------------------- | :----------- |
-| Container      | Orchestrate all micro frontends                        | React        |
-| Dashboard      | Dashboard to connect with other financial products     | Angular      |
-| Insurance      | Domain to show information for insurance products      | React        |
-| Credit cards   | Domain to show information for credit card products    | React        |
-| Saving account | Domain to show information for saving account products | React        |
+| Micro Frontend | Port | Description                                            | Technologies |
+| :------------- | :--: | :----------------------------------------------------- | :----------- |
+| Container      | 9000 | Orchestrate all micro frontends                        | React        |
+| Dashboard      | 8085 | Dashboard to connect with other financial products     | Angular      |
+| Navbar         | 8080 | In charge to render the application menu               | React        |
+| Saving account | 8081 | Domain to show information for saving account products | React        |
+| Credit cards   | 8082 | Domain to show information for credit card products    | React        |
+| Insurance      | 8083 | Domain to show information for insurance products      | React        |
 
 ## Technologies
 
