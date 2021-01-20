@@ -1,4 +1,10 @@
-import { registerApplication, start } from "single-spa";
+import {
+  registerApplication,
+  start,
+  addErrorHandler,
+  getAppStatus,
+  LOAD_ERROR,
+} from "single-spa";
 import {
   constructApplications,
   constructRoutes,
@@ -23,6 +29,17 @@ const applications = constructApplications({
 const layoutEngine = constructLayoutEngine({
   routes,
   applications,
+});
+
+addErrorHandler((err) => {
+  // Here we can manage the error when an application is not loading
+  if (getAppStatus(err.appOrParcelName) === LOAD_ERROR) {
+    System.delete(System.resolve(err.appOrParcelName));
+    alert(
+      "The current app cannot be loaded, you will be redirected to the last navigation."
+    );
+    history.back();
+  }
 });
 
 applications.forEach(registerApplication);

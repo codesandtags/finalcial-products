@@ -16,6 +16,7 @@ This project uses:
 
 ## Wish list
 
+- [ ] Add Husky pre-commit configuration
 - [ ] Integrate monorepo with https://pnpm.js.org/
 - [ ] Docker to deploy all projects
 - [ ] Nginx to load balance the traffic
@@ -69,6 +70,9 @@ module.exports = (webpackConfigEnv) => {
   });
 };
 ```
+
+4. [Install contentful dependency](https://github.com/contentful/contentful.js)
+5.
 
 ## Demo
 
