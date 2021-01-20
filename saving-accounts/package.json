@@ -68,7 +68,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && concurrently pnpm:test pnpm:lint"
+      "pre-commit": "pretty-quick --staged"
     }
   }
 }

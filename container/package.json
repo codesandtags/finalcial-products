@@ -30,7 +30,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && concurrently npm:test npm:lint"
+      "pre-commit": "pretty-quick --staged"
     }
   },
   "devDependencies": {
