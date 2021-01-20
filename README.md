@@ -16,9 +16,9 @@ This project uses:
 
 ## Wish list
 
+- [ ] Integrate monorepo with https://pnpm.js.org/
 - [ ] Docker to deploy all projects
 - [ ] Nginx to load balance the traffic
-- [ ] Add monorepo structure with Lerna
 - [ ] Create a CI/CD pipeline
 - [ ] Deploy in a cloud platform
 
@@ -41,6 +41,33 @@ This project uses:
 - [ ] React 17.x
 - [ ] Angular 11.x
 - [x] npm for dependency resolution
+
+## Steps
+
+1. [Adding Single SPA root file](https://single-spa.js.org/docs/create-single-spa/)
+2. Once you run the commands to create a new single-spa rootFile and application, you will get the option to run the `npm run start` command to show the step by step in the browser. http://single-spa-playground.org/playground/applications-guide
+3. Add the configuration for the Micro frontend projects
+   3.1. The `webpack.config.js` should looks like this:
+
+```javascript
+const { merge } = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa-react");
+
+module.exports = (webpackConfigEnv) => {
+  const defaultConfig = singleSpaDefaults({
+    orgName: "codesandtags", // The orgName is really important, because this will be used in the root file.
+    projectName: "navbar", // The projectName is really important, because this will be used in the root file.
+    webpackConfigEnv,
+  });
+
+  // The rootFile for each project will be like: ${orgName}-${projectName}.js for more information, please check.
+  // https://single-spa.js.org/docs/getting-started-overview#create-a-root-config
+
+  return merge(defaultConfig, {
+    // customizations can go here
+  });
+};
+```
 
 ## Demo
 
