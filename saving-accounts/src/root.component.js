@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 
-import { getSpace, getEntries } from "./services/contentful";
+import { getEntries } from "./services/contentful";
 import ProductCard from "./components/ProductCard";
 
 export default function Root(props) {
@@ -14,7 +14,10 @@ export default function Root(props) {
           console.log(entries);
 
           const savingAccountProducts = entries.items.filter((entry) => {
-            return entry.fields.productType !== undefined;
+            return (
+              entry.fields.productType !== undefined &&
+              entry.fields.productType.fields.type === "SAVING_ACCOUNT"
+            );
           });
           setProducts(savingAccountProducts);
         })
@@ -37,11 +40,13 @@ export default function Root(props) {
             <div className="flex flex-wrap">
               {products.map((product) => {
                 const { id } = product.sys;
+                const isHighlight = Math.floor(Math.random() * 20) < 10;
 
                 return (
                   <ProductCard
                     product={product}
-                    key={Math.random().toString(30)}
+                    isHighlight={isHighlight}
+                    key={id}
                   />
                 );
               })}
