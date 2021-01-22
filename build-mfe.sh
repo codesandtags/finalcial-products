@@ -3,7 +3,7 @@ clear
 echo "1. Installing dependencies ...."
 echo " "
 
-PROJECTS=( "container" "credit-cards" "saving-accounts" "insurance" "dashboard" )
+PROJECTS=( "container" "credit-cards" "saving-accounts" "insurance" "dashboard", "navbar" )
 
 for project in "${PROJECTS[@]}"; 
 do
