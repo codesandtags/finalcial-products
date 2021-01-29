@@ -61,7 +61,8 @@
           "@codesandtags/navbar": "//localhost:8081/codesandtags-navbar.js",
           "@codesandtags/saving-accounts": "//localhost:8082/codesandtags-saving-accounts.js",
           "@codesandtags/credit-cards": "//localhost:8083/codesandtags-credit-cards.js",
-          "@codesandtags/insurance": "//localhost:8084/codesandtags-insurance.js"
+          "@codesandtags/insurance": "//localhost:8084/codesandtags-insurance.js",
+          "@codesandtags/dashboard": "http://localhost:4201/main.js"
         }
       }
     </script>
@@ -71,6 +72,7 @@
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
     Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
   -->
+    <script src="https://unpkg.com/core-js-bundle@3.1.4/minified.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
@@ -95,6 +97,9 @@
           <application name="@codesandtags/navbar"></application>
         </nav>
         <main>
+          <route path="dashboard">
+            <application name="@codesandtags/dashboard"></application>
+          </route>
           <route path="saving-accounts">
             <application name="@codesandtags/saving-accounts"></application>
           </route>

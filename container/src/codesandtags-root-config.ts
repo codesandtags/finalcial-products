@@ -23,7 +23,10 @@ const routes = constructRoutes(document.querySelector("#single-spa-layout"), {
 
 const applications = constructApplications({
   routes,
-  loadApp: ({ name }) => System.import(name),
+  loadApp: (application) => {
+    debugger;
+    return System.import(application.name);
+  },
 });
 
 const layoutEngine = constructLayoutEngine({

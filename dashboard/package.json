@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start:normal": "ng serve",
+    "start": "npm run serve:single-spa",
+    "build": "npm run build:single-spa",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:single-spa": "ng build --prod --output-hashing none",
+    "serve:single-spa": "ng serve --disable-host-check --port 4201  --live-reload false"
   },
   "private": false,
   "repository": {
@@ -24,6 +27,8 @@
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
     "rxjs": "~6.6.0",
+    "single-spa": "^5.5.0",
+    "single-spa-angular": "^4.0.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
