@@ -78,7 +78,7 @@ export default function Root(props) {
                 <Link
                   href="#"
                   className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  to="/"
+                  to="/dashboard"
                 >
                   Dashboard
                 </Link>

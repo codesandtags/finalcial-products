@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
+    "@codesandtags/root-config": "//localhost:9000/codesandtags-root-config.js",
+    "@codesandtags/navbar": "//localhost:9081/codesandtags-navbar.js",
+    "@codesandtags/saving-accounts": "//localhost:8082/codesandtags-saving-accounts.js",
+    "@codesandtags/credit-cards": "//localhost:8083/codesandtags-credit-cards.js",
+    "@codesandtags/insurance": "//localhost:8084/codesandtags-insurance.js",
+    "@codesandtags/dashboard": "http://localhost:4201/main.js"
+  }
+}

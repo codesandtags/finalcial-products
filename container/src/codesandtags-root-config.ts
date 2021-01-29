@@ -1,3 +1,6 @@
+declare const SystemJS: any;
+(window as any).SystemJS = (window as any).System;
+
 import {
   registerApplication,
   start,
@@ -24,7 +27,6 @@ const routes = constructRoutes(document.querySelector("#single-spa-layout"), {
 const applications = constructApplications({
   routes,
   loadApp: (application) => {
-    debugger;
     return System.import(application.name);
   },
 });

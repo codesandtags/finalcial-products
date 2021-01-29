@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "codesandtags";
@@ -22,6 +24,18 @@ module.exports = (webpackConfigEnv, argv) => {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
         },
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, "src/importmap.vendor.json"),
+            to: "importmap.vendor.json",
+          },
+          {
+            from: path.resolve(__dirname, "src/importmap.main.json"),
+            to: "importmap.main.json",
+          },
+        ],
       }),
     ],
   });

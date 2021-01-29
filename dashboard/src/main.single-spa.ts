@@ -1,39 +1,35 @@
 import { enableProdMode, NgZone } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Router, NavigationStart } from '@angular/router';
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 import {
   singleSpaAngular,
   getSingleSpaExtraProviders,
 } from 'single-spa-angular';
-
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import {
+  singleSpaPropsSubject,
+  SingleSpaProps,
+} from './single-spa/single-spa-props';
 
 if (environment.production) {
   enableProdMode();
 }
 
-const lifecycles = singleSpaAngular({
-  bootstrapFunction: async () => {
-    const ngModuleRef = await platformBrowserDynamic(
-      getSingleSpaExtraProviders()
-    ).bootstrapModule(AppModule);
-    ngModuleRef.onDestroy(() => {
-      // This is used only for testing purposes.
-      window.dispatchEvent(new CustomEvent('shopDestroyed'));
-    });
-    return ngModuleRef;
+const lifecycles = singleSpaAngular<SingleSpaProps>({
+  bootstrapFunction: (singleSpaProps) => {
+    singleSpaPropsSubject.next(singleSpaProps);
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(
+      AppModule
+    );
   },
-  template: '<app1-root />',
+  template: '<app-root />',
   Router,
-  NavigationStart,
   NgZone,
+  NavigationStart,
 });
 
 export const bootstrap = lifecycles.bootstrap;
 export const mount = lifecycles.mount;
 export const unmount = lifecycles.unmount;
-// This export is done only for testing purposes, thus we're
-// able to access the `Router` class globally when running E2E
-// tests with Cypress.
-export { Router } from '@angular/router';

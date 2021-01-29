@@ -10,7 +10,7 @@ module.exports = (webpackConfigEnv) => {
 
   return merge(defaultConfig, {
     devServer: {
-      port: 8081,
+      port: 9081,
       historyApiFallback: {
         index: "/index.html",
       },
